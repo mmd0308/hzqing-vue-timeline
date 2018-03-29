@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <hzqing-vue-timeline></hzqing-vue-timeline>
+    <hzqing-vue-timeline timelineColor="#5bbcd5"  timeContentColor="#fff"></hzqing-vue-timeline>
   </div>
 </template>
 
@@ -17,7 +17,6 @@ export default {
 
 <style lang="scss">
 #app{
-  background: #5bbcd5;
-  padding: 5em 0;
+   background: #5bbcd5;
 }
 </style>

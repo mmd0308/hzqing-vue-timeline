@@ -1,5 +1,5 @@
 <template>
-    <div id="hzqing" >
+    <div id="hzqing" ref="timeline" >
         <div class="timeline">
             <div class="timeline-row" v-for="(item,index) in timeItemList" :key="index">
                 <div class="timeline-time">
@@ -7,7 +7,7 @@
                 </div>
                 <div class="timeline-img">
                     <div class="img">
-                    <img src="static/touxiang.jpeg"/>
+                        <img :src="item.img"/>
                     </div>
                 </div>
                 <div class="timeline-content">
@@ -26,44 +26,77 @@
 <script>
 export default {
     name: 'hzqing-vue-timeline',
+    props: {
+        timelineColor:{ // 组建背景颜色
+            type: String,
+            default: '#5bbcd5'
+        },
+        timeContentColor:{
+            type: String,
+            default: '#f2f2f2'
+        }
+    },  
+    mounted() {
+      const timeline = this.$refs.timeline
+      timeline.style.setProperty('--timelineColor', this.timelineColor)
+      timeline.style.setProperty('--timeContentColor', this.timeContentColor)
+    },
     data() {
         return {
             timeItemList:[
                 {
-                    time: '2018年03月22日 06:56',
+                    time: '2018年03月28日 09:45',
                     img: 'static/touxiang.jpeg',
-                    title: '这是一个完美的vue时间轴插件',
-                    content: '参加高考啦,过后报考成都理工大学应用物理专业参加高考啦,过后报考成都理工大学应用物理专业参加高考啦,过后报考成都理工大学应用物理专业参加高考啦,过后报考成都理工大学应用物理专业'
+                    title: 'hzqing.com',
+                    content: '这是衡钊清的个人博客'
                 },
                 {
-                    time: '2018年03月25日 03:56',
-                    img: 'static/touxiang.jpeg',
-                    title: '这是一个标题',
-                    content: '踏上编程道路,学习安卓开发~~~'
+                    time: '2018年03月26日 10:50',
+                    img: 'static/one.jpeg',
+                    title: '这是一个简单的vue时间轴插件',
+                    content: '这是一个简单的vue时间轴插件，使用非常的方便'
                 },
                 {
-                    time: '2018年03月25日 23:56',
+                    time: '2018年03月25日 20:56',
+                    img: 'static/three.jpg',
+                    title: '努力奋斗',
+                    content: '当你发现你的才华撑不起野心时，就请安静下来学习吧~~~'
+                },
+                {
+                    time: '2018年03月24日 11:15',
                     img: 'static/touxiang.jpeg',
-                    title: '这是一个标题',
-                    content: '踏上编程道路,学习安卓开发~~~'
+                    title: 'vue时间轴插件',
+                    content: '初次开发插件，望大神指教'
                 },
                  {
-                    time: '2018年03月22日 06:56',
-                    img: 'static/touxiang.jpeg',
+                    time: '2018年03月23日 06:56',
+                    img: 'static/one.jpeg',
                     title: '这是一个标题',
-                    content: '参加高考啦,过后报考成都理工大学应用物理专业参加高考啦,过后报考成都理工大学应用物理专业参加高考啦,过后报考成都理工大学应用物理专业参加高考啦,过后报考成都理工大学应用物理专业'
+                    content: '这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题'
                 },
                 {
-                    time: '2018年03月25日 03:56',
-                    img: 'static/touxiang.jpeg',
-                    title: '这是一个标题',
-                    content: '踏上编程道路,学习安卓开发~~~'
+                    time: '2018年03月22日 15:32',
+                    img: 'static/three.jpg',
+                    title: '北漂的辛酸',
+                    content: '北漂中~~~~~~'
                 },
                 {
-                    time: '2018年03月25日 23:56',
+                    time: '2018年03月22日 13:50',
                     img: 'static/touxiang.jpeg',
-                    title: '这是一个标题',
-                    content: '踏上编程道路,学习安卓开发~~~'
+                    title: 'hzqing.com',
+                    content: '欢迎参观我的博客~~~'
+                },
+                {
+                    time: '2018年03月21日 10:16',
+                    img: 'static/three.jpg',
+                    title: '开始写vue时间轴插件',
+                    content: '在进行博客第二次开发时候，发现没有找到何时的时间轴插件。最后只能自己动手开始写~~~'
+                },
+                {
+                    time: '2018年03月20日 09:30',
+                    img: 'static/touxiang.jpeg',
+                    title: '博客二次开发',
+                    content: '开发关于我模块，缺少时间轴插件~~~'
                 }
             ]
         }
@@ -79,6 +112,8 @@ export default {
     padding: 20px;
     margin: 0 auto;
     overflow: hidden;
+    background: var(--timelineColor);
+    font-family: "微软雅黑", Arial, Helvetica, sans-serif;
     .timeline-row{
         padding-left: 50%;
         z-index: 10;
@@ -88,14 +123,14 @@ export default {
             right: 50%;
             text-align: right;
             margin-right: 60px;
-            font-size: 15px;
+            font-size: 17px;
             line-height: 35px;
             top: 40px;
         }
         .timeline-img{
             position: absolute;
             top: 30px;
-            left: 50%;
+            left: 49%;
             margin-left: -20px;
             width: 60px;
             height: 60px;
@@ -116,12 +151,13 @@ export default {
         }
         .timeline-content{
             position: relative;
-            background-color: white;
+            background: var(--timeContentColor);
             color: #333333;
             border-radius: 5px;
             margin-right: 0px;
             margin-left: 60px;
             margin-bottom: 20px;
+            min-height: 80px;
             .content-body{
                 padding: 15px 15px 2px;
                 position: relative;
@@ -144,7 +180,7 @@ export default {
             top: 60px;
             left: -60px;
             height: 4px;
-            width: 60px;
+            width: 80px;
             background-color: rgba(0, 0, 0, 0.2);
             z-index: -1;
         }
@@ -195,7 +231,7 @@ export default {
             }
             .timeline-img{
                 top: 40px;
-                left: -45px;
+                left: -60px;
                 margin-left: 0;
             }
             .timeline-time {
@@ -204,6 +240,7 @@ export default {
                 left: auto;
                 top: 0;
                 text-align: left;
+                font-size: 15px;
                 margin: 0 0 0px 40px;
             }
             .timeline-content{
@@ -213,7 +250,7 @@ export default {
             }
             .timeline-content:after{
                 right: auto !important;
-                left: -40px !important;
+                left: -65px !important;
                 top: 30px;
             }
         }
@@ -233,8 +270,8 @@ export default {
     height: 100%;
     width: 4px;
     border-radius: 2px;
+    margin-left: -2px;
     display: block;
-    margin-left: 10px;
 }
 
 </style>
