@@ -19,20 +19,13 @@
 npm install -S hzqing-vue-timeline
 ```
 
-## 使用
-
+## 如何引入
+``` main.js```:
 ```js
-// ES6
-import hzqingVueTimeLine from 'hzqing-vue-timeline.js'
-// require
-var hzqingVueTimeLine = require('hzqingTimeLine')
+// 全局注册
+import hzqingVueTimeline from 'hzqing-vue-timeline'
+Vue.use(hzqingVueTimeline)
 
-Vue.use(hzqingVueTimeLine)
-
-// 或者直接使用script导入
-<script src="./node_modules/vue/dist/hzqing-vue-timeline.js"></script>
-
-// 作为组件的方式使用
  <hzqing-vue-timeline></hzqing-vue-timeline>
 ```
 
