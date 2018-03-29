@@ -1,15 +1,16 @@
 {
   "name": "hzqing-vue-timeline",
   "description": "A Vue.js project",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "hzqing <hengzhaoqing@163.com>",
   "license": "MIT",
   "private": false,
-  "license": "MIT",
   "main": "dist/hzqing-vue-timeline.js",
   "files": [
     "dist",
-    "src"
+    "src",
+    "static",
+    "doc"
   ],
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",

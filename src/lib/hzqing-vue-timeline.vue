@@ -1,7 +1,7 @@
 <template>
     <div id="hzqing" ref="timeline" >
         <div class="timeline">
-            <div class="timeline-row" v-for="(item,index) in timeItemList" :key="index">
+            <div class="timeline-row" v-for="(item,index) in dataList" :key="index">
                 <div class="timeline-time">
                     <span>{{ item.time}} </span>
                 </div>
@@ -27,6 +27,10 @@
 export default {
     name: 'hzqing-vue-timeline',
     props: {
+        dataList: {
+            type:Array,
+            default: this.timeItemList
+        },
         timelineColor:{ // 组建背景颜色
             type: String,
             default: '#5bbcd5'
