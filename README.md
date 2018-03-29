@@ -37,7 +37,7 @@ Vue.use(hzqingVueTimeLine)
 ```
 
 ### 配置
-
+### 引入组件
 ```html
    <hzqing-vue-timeline 
    timelineColor="#5bbcd5"  
@@ -46,6 +46,7 @@ Vue.use(hzqingVueTimeLine)
    ></hzqing-vue-timeline>
 
 ```
+### 组件数据
 ``` js
     data: {
             time: '2018年03月28日 09:45',
