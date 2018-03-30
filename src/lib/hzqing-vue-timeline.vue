@@ -3,7 +3,7 @@
         <div class="timeline">
             <div class="timeline-row" v-for="(item,index) in dataList" :key="index">
                 <div class="timeline-time">
-                    <span>{{ item.time}} </span>
+                    <span>{{ item.time | formatDate }} </span>
                 </div>
                 <div class="timeline-img">
                     <div class="img">
@@ -24,8 +24,21 @@
 </template>
 
 <script>
+import { parseTime } from '../utils/index'
 export default {
     name: 'hzqing-vue-timeline',
+    data() {
+        return {
+            timeItemList:[
+                {
+                    time: '1522372393000',
+                    img: 'static/touxiang.jpeg',
+                    title: 'hzqing.com',
+                    content: '这是衡钊清的个人博客'
+                }
+            ]
+        }
+    },
     props: {
         dataList: {
             type:Array,
@@ -39,71 +52,16 @@ export default {
             type: String,
             default: '#f2f2f2'
         }
-    },  
+    },
+    filters: {
+      formatDate(time) {
+        return parseTime(time, '{y}年{m}月{d} {h}:{i}')
+      }
+    },
     mounted() {
       const timeline = this.$refs.timeline
       timeline.style.setProperty('--timelineColor', this.timelineColor)
       timeline.style.setProperty('--timeContentColor', this.timeContentColor)
-    },
-    data() {
-        return {
-            timeItemList:[
-                {
-                    time: '2018年03月28日 09:45',
-                    img: 'static/touxiang.jpeg',
-                    title: 'hzqing.com',
-                    content: '这是衡钊清的个人博客'
-                },
-                {
-                    time: '2018年03月26日 10:50',
-                    img: 'static/one.jpeg',
-                    title: '这是一个简单的vue时间轴插件',
-                    content: '这是一个简单的vue时间轴插件，使用非常的方便'
-                },
-                {
-                    time: '2018年03月25日 20:56',
-                    img: 'static/three.jpg',
-                    title: '努力奋斗',
-                    content: '当你发现你的才华撑不起野心时，就请安静下来学习吧~~~'
-                },
-                {
-                    time: '2018年03月24日 11:15',
-                    img: 'static/touxiang.jpeg',
-                    title: 'vue时间轴插件',
-                    content: '初次开发插件，望大神指教'
-                },
-                 {
-                    time: '2018年03月23日 06:56',
-                    img: 'static/one.jpeg',
-                    title: '这是一个标题',
-                    content: '这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题'
-                },
-                {
-                    time: '2018年03月22日 15:32',
-                    img: 'static/three.jpg',
-                    title: '北漂的辛酸',
-                    content: '北漂中~~~~~~'
-                },
-                {
-                    time: '2018年03月22日 13:50',
-                    img: 'static/touxiang.jpeg',
-                    title: 'hzqing.com',
-                    content: '欢迎参观我的博客~~~'
-                },
-                {
-                    time: '2018年03月21日 10:16',
-                    img: 'static/three.jpg',
-                    title: '开始写vue时间轴插件',
-                    content: '在进行博客第二次开发时候，发现没有找到何时的时间轴插件。最后只能自己动手开始写~~~'
-                },
-                {
-                    time: '2018年03月20日 09:30',
-                    img: 'static/touxiang.jpeg',
-                    title: '博客二次开发',
-                    content: '开发关于我模块，缺少时间轴插件~~~'
-                }
-            ]
-        }
     }
 }
 </script>
@@ -112,7 +70,6 @@ export default {
 #hzqing{
     list-style: none;
     position: relative;
-    max-width: 1200px;
     padding: 20px;
     margin: 0 auto;
     overflow: hidden;
@@ -215,7 +172,7 @@ export default {
                 right: auto;
                 top: 0;
                 margin: 0 0 6px 56px;
-                padding-left: 0;
+                padding: 0;
                 margin-bottom: 16px;
             }
             .timeline-row:nth-child(odd){
@@ -237,6 +194,7 @@ export default {
                 top: 40px;
                 left: -60px;
                 margin-left: 0;
+                padding: 0px;
             }
             .timeline-time {
                 position: relative;
