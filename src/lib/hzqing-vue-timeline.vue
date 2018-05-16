@@ -6,9 +6,7 @@
                     <span>{{ item.time | formatDate }} </span>
                 </div>
                 <div class="timeline-img">
-                    <div class="img">
-                        <img :src="item.img"/>
-                    </div>
+                    <avatar style="border-radius: 50%; background: pink;" username="Heng Zhao Qing" :src="item.img" :size="60" ></avatar>
                 </div>
                 <div class="timeline-content">
                     <div class="content-body">
@@ -25,8 +23,12 @@
 
 <script>
 import { parseTime } from '../utils/index'
+import Avatar from 'vue-avatar'
 export default {
     name: 'hzqing-vue-timeline',
+    components: {
+      Avatar
+    },
     data() {
         return {
             timeItemList:[
@@ -92,7 +94,7 @@ export default {
             position: absolute;
             top: 30px;
             left: 49%;
-            margin-left: -20px;
+            margin-left: -15px;
             width: 60px;
             height: 60px;
             text-align: center;
@@ -100,15 +102,6 @@ export default {
             padding: 3px;
             font-size: 14px;
             z-index: 100;
-            .img{
-                width: 60px;
-                height: 60px;
-                img{
-                    width: 100%;
-                    height: 100%;
-                    border-radius: 50%;
-                }
-            }
         }
         .timeline-content{
             position: relative;
@@ -192,7 +185,7 @@ export default {
             }
             .timeline-img{
                 top: 40px;
-                left: -60px;
+                left: -55px;
                 margin-left: 0;
                 padding: 0px;
             }
